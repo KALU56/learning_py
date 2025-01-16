@@ -51,4 +51,32 @@ num6={1,2,3}
 num7={3,4,5}
 num8=num6.symmetric_difference(num7)
 print(num8)
+#Q2. Use a set to remove duplicate characters from a string.
+# Input: "hello"
+# Output: {'h', 'e', 'l', 'o'}
+string="hello"
+string1=set(string)
+print(string1)
+#Q3.3. Check if the set {1, 2} is a subset of {1, 2, 3} 
+num9={1,2}
+num10={1,2,3}
+num11=num9.issubset(num10)
+print(num11)
+#Q4. Check if the set {1, 2} is a superset of {1, 2, 3}
+num12=num9.issuperset(num10)
+print(num12)
+#Q5. Write a program to find the union of multiple sets using the union() method.
+num13={1,2,3}
+num14={3,4,5}
+num15={5,6,7}
+num16=num13.union(num14,num15)
+print(num16)
+
+
+
+
+
+
+
+
 
