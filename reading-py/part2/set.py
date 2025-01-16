@@ -31,4 +31,24 @@ print(num4)
 #Q3. Find the difference between the sets {1, 2, 3} and {3, 4, 5} using difference() .
 num5=num1.difference(num2)
 print(num5)
+#Q4. Create a set of numbers from 1 to 5 and remove all items using clear() .
+num={1,2,3,4,5}
+num.clear()
+print(num)
+#Q5. Write a program to find duplicates in a list using a set.
+list1=[1,2,3,2,4,5,1]
+list2=set()
+list3=set()
+for i in list1:
+    if i not in list2:
+        list2.add(i)
+    else:
+        list3.add(i)
+print(list3)
+##Hard Exercises
+#Q1. Write a program to find the symmetric difference between two sets {1, 2, 3} and {3, 4, 5} using symmetric_difference() .
+num6={1,2,3}
+num7={3,4,5}
+num8=num6.symmetric_difference(num7)
+print(num8)
 
