@@ -41,6 +41,32 @@ print(sum(num7))
 #Q5. Write a program to test if every element of a tuple is the same type.
 num8=(1,2,3,4,5)
 print(all(isinstance(i,int) for i in num8))
+##Hard Exercises
+#Q1. Write a program to convert a tuple to a dictionary.
+num9=((1,"apple"),(2,"banana"),(3,"cherry"))
+num10=dict(num9)
+print(num10)
+#Q2. Write a program to reverse a tuple.
+num11=(1,2,3,4,5)
+num12=tuple(reversed(num11))
+print(num12)
+#Q3.Convert a tuple of strings to uppercase: ("hello", "world") → ("HELLO", "WORLD") .
+string=("hello","world")
+string1=tuple(i.upper() for i in string)
+print(string1)
+#Q4.Write a program to find the unique elements in two tuples.
+num13=(1,2,3,4,5)
+num14=(4,5,6,7,8)
+num15=set(num13).symmetric_difference(set(num14))
+print(num15)
+#Q5.  Create a tuple of mixed data types and filter out only the string elements
+num16=(1,"apple",3.14,"banana",7)
+num17=tuple(i for i in num16 if isinstance(i,str))
+print(num17)
+
+
+
+
 
 
 
