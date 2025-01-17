@@ -2,93 +2,130 @@ import tkinter as tk
 from tkinter import messagebox
 
 
-# Function to handle login
+# Dummy Data for Login
+users = {
+    "supervisor": {"password": "admin123", "role": "supervisor"},
+    "donor1": {"password": "donor123", "role": "donor", "history": ["Blood Donation on 2024-12-01"]},
+    "donor2": {"password": "donor456", "role": "donor", "history": []},
+}
+
+donations = []  # List to store donation history
+
+
+# Login Function
 def login():
     username = username_entry.get()
     password = password_entry.get()
 
-    # Dummy credentials for testing
-    if username == "admin" and password == "admin123":
+    if username in users and users[username]["password"] == password:
+        role = users[username]["role"]
         root.destroy()  # Close login window
-        open_dashboard()
+        if role == "supervisor":
+            open_supervisor_dashboard()
+        elif role == "donor":
+            open_donor_dashboard(username)
     else:
         messagebox.showerror("Error", "Invalid username or password")
 
 
-# Function to open the dashboard
-def open_dashboard():
-    dashboard = tk.Tk()
-    dashboard.title("Dashboard")
-    dashboard.geometry("400x400")
+# Supervisor Dashboard
+def open_supervisor_dashboard():
+    supervisor_dashboard = tk.Tk()
+    supervisor_dashboard.title("Supervisor Dashboard")
+    supervisor_dashboard.geometry("500x400")
 
-    tk.Label(dashboard, text="Welcome to the Blood Bank System!", font=("Arial", 16)).pack(pady=20)
+    tk.Label(supervisor_dashboard, text="Supervisor Dashboard", font=("Arial", 16)).pack(pady=10)
 
-    tk.Button(dashboard, text="Register Donor", width=20, command=open_donor_registration).pack(pady=10)
-    tk.Button(dashboard, text="View Donors", width=20, command=view_donors).pack(pady=10)
-    tk.Button(dashboard, text="Exit", width=20, command=dashboard.destroy).pack(pady=10)
+    def add_donation():
+        add_donation_window = tk.Toplevel(supervisor_dashboard)
+        add_donation_window.title("Add Donation History")
+        add_donation_window.geometry("400x300")
 
-    dashboard.mainloop()
+        tk.Label(add_donation_window, text="Donor Username:").pack(anchor="w", padx=20, pady=5)
+        donor_entry = tk.Entry(add_donation_window, width=30)
+        donor_entry.pack(padx=20)
 
+        tk.Label(add_donation_window, text="Donation Date (YYYY-MM-DD):").pack(anchor="w", padx=20, pady=5)
+        date_entry = tk.Entry(add_donation_window, width=30)
+        date_entry.pack(padx=20)
 
-# Function to open the donor registration form
-def open_donor_registration():
-    registration = tk.Toplevel()
-    registration.title("Donor Registration")
-    registration.geometry("400x400")
+        def save_donation():
+            donor = donor_entry.get()
+            date = date_entry.get()
 
-    tk.Label(registration, text="Donor Registration", font=("Arial", 16)).pack(pady=10)
+            if donor in users and users[donor]["role"] == "donor":
+                users[donor]["history"].append(f"Blood Donation on {date}")
+                donations.append(f"{donor}: {date}")
+                messagebox.showinfo("Success", "Donation history added!")
+                add_donation_window.destroy()
+            else:
+                messagebox.showerror("Error", "Invalid donor username!")
 
-    tk.Label(registration, text="Name:").pack(anchor="w", padx=20)
-    name_entry = tk.Entry(registration, width=30)
-    name_entry.pack(padx=20)
+        tk.Button(add_donation_window, text="Save", command=save_donation).pack(pady=10)
 
-    tk.Label(registration, text="Age:").pack(anchor="w", padx=20)
-    age_entry = tk.Entry(registration, width=30)
-    age_entry.pack(padx=20)
+    def view_donations():
+        view_window = tk.Toplevel(supervisor_dashboard)
+        view_window.title("All Donations")
+        view_window.geometry("400x400")
 
-    tk.Label(registration, text="Blood Type:").pack(anchor="w", padx=20)
-    blood_type_entry = tk.Entry(registration, width=30)
-    blood_type_entry.pack(padx=20)
-
-    tk.Label(registration, text="Medical History:").pack(anchor="w", padx=20)
-    medical_history_entry = tk.Text(registration, width=30, height=5)
-    medical_history_entry.pack(padx=20)
-
-    def save_donor():
-        name = name_entry.get()
-        age = age_entry.get()
-        blood_type = blood_type_entry.get()
-        medical_history = medical_history_entry.get("1.0", "end-1c")
-
-        if not name or not age or not blood_type:
-            messagebox.showerror("Error", "All fields are required!")
+        tk.Label(view_window, text="All Donations", font=("Arial", 14)).pack(pady=10)
+        if donations:
+            for donation in donations:
+                tk.Label(view_window, text=donation).pack(anchor="w", padx=20)
         else:
-            # Save donor details to a file or database (dummy implementation here)
-            with open("donors.txt", "a") as file:
-                file.write(f"{name},{age},{blood_type},{medical_history}\n")
-            messagebox.showinfo("Success", "Donor registered successfully!")
-            registration.destroy()
+            tk.Label(view_window, text="No donations found!").pack()
 
-    tk.Button(registration, text="Register", command=save_donor).pack(pady=10)
+    def post_news():
+        post_news_window = tk.Toplevel(supervisor_dashboard)
+        post_news_window.title("Post News")
+        post_news_window.geometry("400x300")
+
+        tk.Label(post_news_window, text="Post News", font=("Arial", 14)).pack(pady=10)
+        news_entry = tk.Text(post_news_window, width=40, height=10)
+        news_entry.pack(pady=10)
+
+        def save_news():
+            news = news_entry.get("1.0", "end-1c")
+            if news.strip():
+                messagebox.showinfo("Success", "News posted successfully!")
+                post_news_window.destroy()
+            else:
+                messagebox.showerror("Error", "News content cannot be empty!")
+
+        tk.Button(post_news_window, text="Post", command=save_news).pack(pady=10)
+
+    tk.Button(supervisor_dashboard, text="Add Donation History", command=add_donation).pack(pady=10)
+    tk.Button(supervisor_dashboard, text="View Donations", command=view_donations).pack(pady=10)
+    tk.Button(supervisor_dashboard, text="Post News", command=post_news).pack(pady=10)
+
+    supervisor_dashboard.mainloop()
 
 
-# Function to view donors
-def view_donors():
-    try:
-        with open("donors.txt", "r") as file:
-            donors = file.readlines()
+# Donor Dashboard
+def open_donor_dashboard(username):
+    donor_dashboard = tk.Tk()
+    donor_dashboard.title("Donor Dashboard")
+    donor_dashboard.geometry("500x400")
 
-        donor_window = tk.Toplevel()
-        donor_window.title("Donor List")
-        donor_window.geometry("400x400")
+    tk.Label(donor_dashboard, text=f"Welcome, {username}!", font=("Arial", 16)).pack(pady=10)
 
-        tk.Label(donor_window, text="Registered Donors", font=("Arial", 16)).pack(pady=10)
+    def view_history():
+        history_window = tk.Toplevel(donor_dashboard)
+        history_window.title("Donation History")
+        history_window.geometry("400x300")
 
-        for donor in donors:
-            tk.Label(donor_window, text=donor.strip()).pack(anchor="w", padx=20)
+        tk.Label(history_window, text="Your Donation History", font=("Arial", 14)).pack(pady=10)
 
-    except FileNotFoundError:
-        messagebox.showerror("Error", "No donors found!")
+        history = users[username]["history"]
+        if history:
+            for record in history:
+                tk.Label(history_window, text=record).pack(anchor="w", padx=20)
+        else:
+            tk.Label(history_window, text="No donation history found!").pack()
+
+    tk.Button(donor_dashboard, text="View Donation History", command=view_history).pack(pady=10)
+
+    donor_dashboard.mainloop()
 
 
 # Main Login Window
