@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 
 # File Paths
-DATA_FILE = "data/blood_bank_data.json"
+DATA_FILE = "blood_bank_data.json"
 
 # Helper Functions
 def load_data():

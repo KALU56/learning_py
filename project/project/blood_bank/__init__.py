@@ -39,6 +39,7 @@ GUI_THEME = {
 
 # Message types
 MESSAGE_TYPES = {
+  
     'APPOINTMENT_CONFIRMATION': 'appointment_confirmation',
     'DONATION_REMINDER': 'donation_reminder',
     'GENERAL_UPDATE': 'general_update',
