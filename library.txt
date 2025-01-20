@@ -1,5 +1,6 @@
 1,To Kill a Mockingbird,10
-2,1984,8
 3,The Great Gatsby,5
 4,The Catcher in the Rye,7
 5,Pride and Prejudice,6
+1,minhogalhu,25
+1,li,65
