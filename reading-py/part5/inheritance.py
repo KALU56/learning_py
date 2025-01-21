@@ -135,27 +135,27 @@ print(checking_account.balance)  # Output: 0
 #Q5. Create a Animal class that has a method speak() that prints "Animal speaks". Create a Dog class that inherits from the Animal class and overrides the speak() method to print "Dog barks". Create a Cat class that inherits from the Animal class and overrides the speak() method to print "Cat meows". Ensure that the Dog and Cat classes use the super() function to call the speak() method of the Animal class.
 class Animal:
     def speak(self):
-        print("Animal speaks")
+        return "Animal speaks"
 
 
 class Dog(Animal):
     def speak(self):
-        super().speak()
-        print("Dog barks")
+        base_speak = super().speak()
+        return f"{base_speak}, Dog barks"
 
 
 class Cat(Animal):
     def speak(self):
-        super().speak()
-        print("Cat meows")
+        base_speak = super().speak()
+        return f"{base_speak}, Cat meows"
 
 
 # Example usage
 dog = Dog()
-dog.speak()  # Output: Animal speaks, Dog barks
+print(dog.speak())  # Output: Animal speaks, Dog barks
 
 cat = Cat()
-cat.speak()  # Output: Animal speaks, Cat meows
+print(cat.speak())  # Output: Animal speaks, Cat meows
 
 #Q6. Write a program to demonstrate hierarchical inheritance with a Person class and Student and Teacher subclasses
 class Person:
@@ -244,21 +244,3 @@ class Employee(Company):
 # Example usage
 employee = Employee("ABC Inc.", "New York", "12345")
 employee.display()
-#Q10.Create a Vehicle class with a method fuel_efficiency() and override it in Car and Bike subclasses.
-class Vehicle:
-    def fuel_efficiency(self):
-        pass
-class Car(Vehicle):
-    def fuel_efficiency(self):
-        print("Car fuel efficiency: 20 km/l")
-class Bike(Vehicle):
-    def fuel_efficiency(self):
-        print("Bike fuel efficiency: 40 km/l")
-# Example usage
-car = Car()
-
-car.fuel_efficiency()  # Car fuel efficiency: 20 km/l
-
-
-
-    
