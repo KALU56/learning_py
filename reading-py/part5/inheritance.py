@@ -50,41 +50,69 @@ class ElectricCar(Car):
 electric_car = ElectricCar("Tesla", "Model S", 2023, "100 kWh")
 print(electric_car.display())
 #Q3. Create a Shape class that has a method area() that returns 0. Create a Rectangle class that inherits from the Shape class and adds a method area() that calculates and returns the area of the rectangle. The Rectangle class should have attributes width and height. Create a Square class that inherits from the Rectangle class and adds a method area() that calculates and returns the area of the square. The Square class should have an attribute side_length. Ensure that the Rectangle and Square classes use the super() function to call the constructor of the Shape and Rectangle classes, respectively.
+# Base Shape class
 class Shape:
+    # Base method for calculating area, defaults to 0
+    def __init__(self):
+        print("Shape Initialized.")
+
     def area(self):
         return 0
+
+
+# Rectangle class inheriting from Shape
 class Rectangle(Shape):
     def __init__(self, width, height):
+        # Initialize the base Shape class
+        super().__init__()
         self.width = width
         self.height = height
 
+    # Overriding the area() method to calculate rectangle area
     def area(self):
         return self.width * self.height
+
+
+# Square class inheriting from Rectangle
 class Square(Rectangle):
     def __init__(self, side_length):
+        # Initialize Rectangle with equal width and height
         super().__init__(side_length, side_length)
 
+    # Optionally, override area method for consistency
     def area(self):
+        # Still call parent "Rectangle" area method.
         return super().area()
-    
-# Example usage 
+
+
+# Example usage
 rectangle = Rectangle(4, 5)
-print(rectangle.area())  # 20
-Square = Square(5)
-print(Square.area())  # 25
+print(f"Rectangle Area: {rectangle.area()}")  # 20
+
+square = Square(5)
+print(f"Square Area: {square.area()}")  # 25
+
 #Q4. Create a BankAccount class that has attributes account_number and balance, and methods deposit() and withdraw() to add or subtract from the balance. Create a CheckingAccount class that inherits from BankAccount and adds an additional attribute limit and a method withdraw() that allows for overdrafts up to the limit. If the withdrawal amount exceeds the balance and the overdraft limit, print "Insufficient funds." Ensure that the CheckingAccount class uses the super() function to call the constructor of the BankAccount class to initialize the account number and balance attributes.
 class BankAccount:
-    def __init__(self, account_number, balance):
+    def __init__(self, account_number, balance=0):
         self.account_number = account_number
         self.balance = balance
 
     def deposit(self, amount):
-        self.balance += amount
+        if amount > 0:
+            self.balance += amount
+        else:
+            print("Deposit amount must be positive.")
 
     def withdraw(self, amount):
-        self.balance -= amount
+        if amount > self.balance:
+            print("Insufficient funds.")
+        else:
+            self.balance -= amount
+
+
 class CheckingAccount(BankAccount):
-    def __init__(self, account_number, balance, limit):
+    def __init__(self, account_number, balance=0, limit=0):
         super().__init__(account_number, balance)
         self.limit = limit
 
@@ -93,31 +121,42 @@ class CheckingAccount(BankAccount):
             print("Insufficient funds.")
         else:
             self.balance -= amount
+
+
 # Example usage
 checking_account = CheckingAccount("123456", 1000, 500)
 checking_account.deposit(500)
-print(checking_account.balance)  # 1500
+print(checking_account.balance)  # Output: 1500
 checking_account.withdraw(2000)  # Insufficient funds.
-print(checking_account.balance)  # 1500
+print(checking_account.balance)  # Output: 1500
 checking_account.withdraw(1500)
-print(checking_account.balance)  # 0
+print(checking_account.balance)  # Output: 0
+
 #Q5. Create a Animal class that has a method speak() that prints "Animal speaks". Create a Dog class that inherits from the Animal class and overrides the speak() method to print "Dog barks". Create a Cat class that inherits from the Animal class and overrides the speak() method to print "Cat meows". Ensure that the Dog and Cat classes use the super() function to call the speak() method of the Animal class.
 class Animal:
     def speak(self):
         print("Animal speaks")
+
+
 class Dog(Animal):
     def speak(self):
         super().speak()
         print("Dog barks")
+
+
 class Cat(Animal):
     def speak(self):
         super().speak()
         print("Cat meows")
+
+
 # Example usage
 dog = Dog()
-dog.speak()  # Animal speaks, Dog barks
+dog.speak()  # Output: Animal speaks, Dog barks
+
 cat = Cat()
-cat.speak()  # Animal speaks, Cat meows
+cat.speak()  # Output: Animal speaks, Cat meows
+
 #Q6. Write a program to demonstrate hierarchical inheritance with a Person class and Student and Teacher subclasses
 class Person:
     def __init__(self, name, age):
