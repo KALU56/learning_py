@@ -6,7 +6,8 @@ print(add_two_numbers(3, 4)) # 7
 def area_of_circle(r):
     PI = 3.14
     return PI * r * r
-print(area_of_circle(10)) # 314.0
+print(area_of_circle(10))
+ # 314.0
 #Q3. Write a function called add_all_nums which takes arbitrary number of arguments and sums all the arguments. Check if all the list items are number types. If not do give a reasonable feedback.
 def add_all_nums(*args):
     total = 0
