@@ -41,6 +41,12 @@ match balance:
     print("withdrawal successful")
   case _:
     print("insufficient balance") 
+##
+import math
+area=input("enter your want to calculat area (circle,rectangle,trangel: )")
+if area=="circle:":
+  raduis=float(input("enter the radius of the circle: "))
+  resule=math
  #6 file operation
 file=open("file.txt","r")
 content=file.read()

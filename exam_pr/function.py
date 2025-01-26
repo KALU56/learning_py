@@ -7,10 +7,12 @@ print(greet("Alice"))
 # Examples
 # 1. Calculate the Area of a Circle
 import math
+radius=int(input("enter the radus: "))
 def area_of_circle(radius):
-  return math.pi * radius ** 2
+  resalt=math.pi * radius ** 2
+  return resalt
 
-print(area_of_circle(5))  
+print(area_of_circle(radius))  
 
 # 2. Find the Largest Number
 def find_largest_number(*numbers):
@@ -32,11 +34,12 @@ def is_prime(number):
 print(is_prime(11))
 
 # 4. Calculate the Factorial of a Number
+n=int(input("Enter the number of that fac: "))
 def factorial(number):
   if number == 0:
     return 1
   return number * factorial(number - 1)
-print(factorial(5))
+print(factorial(n))
 
 # 5. Calculate the Fibonacci Sequence
 def fibonacci(n):

@@ -11,6 +11,7 @@ print(p.firstname)  # Output: Selam
 print(p.lastname)   # Output: Yetayeh
 
 print(p.age)
+
 class Person:
     def __init__(self, name, age):
         self.name = name  # Instance attribute
@@ -56,7 +57,7 @@ class Employee:
     def __init__(self, name, position):
         self.name = name  # Instance attribute
         self.position = position  # Instance attribute
-
+ 
 # Creating objects
 emp1 = Employee("Alice", "Developer")
 emp2 = Employee("Bob", "Manager")

@@ -20,7 +20,7 @@ class Student:
     @staticmethod
     def is_passing(marks):
         return marks > 50
-
+  
 student = Student("John", 20, {"Math": 95, "Science": 88, "History": 92})
 student.add_marks("Math", 100)
 print(student.marks)
@@ -77,6 +77,7 @@ print(Animal.display_class_info())  # Output: This class represents Animal anima
 print(Animal.is_domestic("Dog"))  # Output: True
 
 #Q3 Design a Company class with attributes for name, industry, and founding year. Write a method to display the company's details and another method to calculate its age based on the current year.
+
 class Company:
     def __init__(self, name, industry, founding_year,datetime):
         self.name = name

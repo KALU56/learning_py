@@ -53,7 +53,7 @@ else:
   print("it is zero")
 #2 Create a simple calculator using if-elif-else.
 num1=int(input("enter your want : "))
-num2=nt(input("enter your want : "))
+num2=int(input("enter your want : "))
 operater=input("your want operater")
 if operater=="+" :
   print({num1} + {num2}) 
