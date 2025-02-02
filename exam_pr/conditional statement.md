@@ -12,9 +12,9 @@ Conditional statements in Python are used to execute code based on specific cond
 
 ### **Syntax**
 ```python
-if condition:
+if condition:..
     # Code block for true condition
-elif another_condition:
+elif another_co ndition:
     # Code block for another true condition
 else:
     # Code block if all conditions are false

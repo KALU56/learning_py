@@ -24,7 +24,7 @@ def function_name(parameters):
 ### **Types of Functions**
 
 1. **Built-in Functions**:
-   Predefined in Python, like `print()`, `len()`, `type()`, etc.
+   Predefined in Python, like `print()`, `len()`, `type()`, etc.2
    ```python
    print("Hello, World!")
    print(len("Python"))  # Output: 6
@@ -111,7 +111,8 @@ print(multiply(2, 3))  # Output: 6
    - **`**kwargs`**: Passes multiple keyword arguments.
      ```python
      def display_info(**kwargs):
-         for key, value in kwargs.items():
+         for key,.
+          value in kwargs.items():
              print(f"{key}: {value}")
 
      display_info(name="Alice", age=25)
