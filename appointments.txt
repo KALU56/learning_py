@@ -3,5 +3,14 @@ DonorID: 261b7797-1bee-4115-952c-1b761c232a76
 SupervisorID: 059bcd07-c9fb-4142-a841-d0459448957a
 AppointmentDate: 2025-03-06
 AppointmentTime: 12:00
-AppointmentStatus: Scheduled
+AppointmentStatus: Approved
+----------------------------------------
+AppointmentID: c1757929-8115-4ea1-8a12-18664a2d228c
+DonorID: 985ac9cb-04d6-4aaa-8752-521e75543a61
+Email: e@gmail.com
+SupervisorID: 0df3df0d-834c-4623-929c-e74fe740c442
+AppointmentDate: 2025-05-05
+AppointmentTime: 12:00
+AppointmentStatus: Disapproved
+----------------------------------------
 ----------------------------------------

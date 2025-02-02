@@ -14,3 +14,19 @@ Region: dd
 Wereda: ss
 Subcity: ss
 ----------------------------------------
+DonorID: 985ac9cb-04d6-4aaa-8752-521e75543a61
+FirstName: ka
+LastName: li
+DateOfBirth: 2005-06-06
+Gender: Male
+BloodType: A
+Email: e@gmail.com
+DonorPhoneID: f2805539-8fa6-4629-b12b-c2002ea77bdc
+PhoneNumber: 0912345678
+PhoneType: home
+DonorAddressID: fad489ff-15bc-4092-a424-60b1ff29c5bd
+City: a
+Region: a
+Wereda: a
+Subcity: a
+----------------------------------------
