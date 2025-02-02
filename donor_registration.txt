@@ -1,0 +1,16 @@
+DonorID: 261b7797-1bee-4115-952c-1b761c232a76
+FirstName: 
+LastName: 
+DateOfBirth: 2000-05-05
+Gender: Male
+BloodType: A
+Email: q@gmail.com
+DonorPhoneID: 53785794-e9ad-44be-8f96-54b141c65c79
+PhoneNumber: 0912345678
+PhoneType: home
+DonorAddressID: e8fa637f-7fdf-49cd-9500-3e8ec6ddd623
+City: dd
+Region: dd
+Wereda: ss
+Subcity: ss
+----------------------------------------
