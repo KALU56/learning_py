@@ -210,3 +210,40 @@ def appointment():
 
     except Exception as e:
         print(f"Error saving appointment: {e}")
+def notify_donor():
+    # Ask the donor for their email
+    email = input("Please enter your email to view your medical history: ").strip()
+
+    try:
+        # Read the medical history file
+        with open("medical_history.txt", "r") as file:
+            lines = file.readlines()
+        
+        # Flag to check if the email's medical history is found
+        found = False
+        donor_history = []
+
+        # Loop through the file lines and extract the medical history for the provided email
+        for line in lines:
+            if line.startswith("Email:"):
+                current_email = line.split(":")[1].strip()
+                if current_email == email:
+                    found = True
+                    donor_history.append(f"Medical History for {email}:")
+            if found:
+                donor_history.append(line.strip())  # Add the rest of the medical history details
+            if line.startswith("----------------------------------------") and found:
+                found = False  # Reset flag after a complete record
+                break  # Stop after reading the donor's complete record
+
+        # Display the medical history
+        if donor_history:
+            print("\n".join(donor_history))
+        else:
+            print(f"No medical history found for email: {email}")
+
+    except FileNotFoundError:
+        print("Medical history file not found. Please ensure it exists.")
+    except Exception as e:
+        print(f"Error accessing medical history: {e}")
+

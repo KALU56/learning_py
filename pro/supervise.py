@@ -1,3 +1,4 @@
+import doners_i
 def approve_appointments():
     try:
         with open("appointments.txt", "r") as file:
@@ -113,3 +114,54 @@ def view_single_donor(index):
             print("Invalid index. Please select a valid donor index.")
     except FileNotFoundError:
         print("The donors' file does not exist yet. Please register first.")
+import uuid
+import uuid
+
+def record_medical_history():
+    email = input("Enter Donor Email: ").strip()
+    
+    # Supervisor inputs medical conditions
+    print("\nEnter Medical Conditions (1 = Yes, 0 = No):")
+    hiv = input("HIV (1/0): ").strip()
+    syphilis = input("Syphilis (1/0): ").strip()
+    hepatitis_b = input("Hepatitis B (1/0): ").strip()
+    hepatitis_c = input("Hepatitis C (1/0): ").strip()
+    
+    # Validate conditions (must be 1 or 0)
+    if not all(condition in ['0', '1'] for condition in [hiv, syphilis, hepatitis_b, hepatitis_c]):
+        print("Invalid input for medical conditions. Please enter 1 or 0.")
+        return
+
+    # Supervisor inputs sugar level and outcome details
+    sugar_level = input("Enter Sugar Level: ").strip()
+    outcome_details = input("Enter Outcome Details: ").strip()
+    
+    history_id = str(uuid.uuid4())  # Unique identifier for medical history
+    
+    # Save to file
+    try:
+        with open("medical_history.txt", "a") as file:
+            file.write(f"HistoryID: {history_id}\n")
+            file.write(f"Email: {email}\n")
+            file.write(f"HIV: {hiv}\n")
+            file.write(f"Syphilis: {syphilis}\n")
+            file.write(f"Hepatitis_B: {hepatitis_b}\n")
+            file.write(f"Hepatitis_C: {hepatitis_c}\n")
+            file.write(f"SugarLevel: {sugar_level}\n")
+            file.write(f"OutcomeDetails: {outcome_details}\n")
+            file.write("----------------------------------------\n")
+        
+        print("Medical history recorded successfully!")
+
+        # Show confirmation of history recorded
+        print(f"\nDonor {email} has been successfully updated with the following details:")
+        print(f"HIV: {hiv}, Syphilis: {syphilis}, Hepatitis B: {hepatitis_b}, Hepatitis C: {hepatitis_c}")
+        print(f"Sugar Level: {sugar_level}")
+        print(f"Outcome Details: {outcome_details}")
+
+        # Notify donor (can be shown on console or implemented with actual email)
+        # Calling a function that could notify the donor (replace with actual email logic if needed)
+        doners_i.notify_donor(email)
+    
+    except Exception as e:
+        print(f"Error saving medical history: {e}")

@@ -22,7 +22,7 @@ def donor_welcome():
         elif option == "3":
             doners_i.check_appointment_status()
         elif option == "4":
-            return 1
+            doners_i.notify_donor()
         elif option == "5":
             print("Exiting... Goodbye!")
             break
@@ -48,7 +48,8 @@ def supervisor_welcome():
         elif option == "2":
             supervise.approve_appointments()# Corrected function call
         elif option == "3":
-            print("Medical Information feature is under development.")
+            supervise.record_medical_history()
+            
         elif option == "4":
             print("Exiting... Goodbye!")
             break
@@ -64,7 +65,7 @@ def BloodBank():
         print("1.Donor")
         print("2.superviser")
        
-        print("5. Exit")
+        print("3. Exit")
 
         option = input("Please choose an option (1, 2, 3): ").strip()
 
