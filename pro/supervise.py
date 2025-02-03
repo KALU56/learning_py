@@ -165,3 +165,46 @@ def record_medical_history():
     
     except Exception as e:
         print(f"Error saving medical history: {e}")
+import uuid
+from datetime import datetime
+
+def record_health_state():
+    # Supervisor inputs DonorID, DonationID, and health check details
+    donor_id = input("Enter Donor ID: ").strip()
+    donation_id = input("Enter Donation ID: ").strip()
+
+    # Supervisor inputs weight, sugar level, and blood pressure
+    weight = input("Enter Donor's Weight (kg): ").strip()
+    sugar_level = input("Enter Donor's Sugar Level: ").strip()
+    blood_pressure = input("Enter Donor's Blood Pressure: ").strip()
+
+    # Supervisor inputs the date and time of the health check
+    date_checked = input("Enter Date of Health Check (YYYY-MM-DD): ").strip()
+    time_checked = input("Enter Time of Health Check (HH:MM): ").strip()
+
+    # Validate the date and time format
+    try:
+        datetime.strptime(date_checked, "%Y-%m-%d")  # Validate the date format
+        datetime.strptime(time_checked, "%H:%M")     # Validate the time format
+    except ValueError:
+        print("Invalid date or time format. Please enter in the correct format.")
+        return
+
+    health_state_id = str(uuid.uuid4())  # Unique identifier for health state record
+
+    # Save the health state record to a file
+    try:
+        with open("health_state.txt", "a") as file:
+            file.write(f"HealthStateID: {health_state_id}\n")
+            file.write(f"DonorID: {donor_id}\n")
+            file.write(f"DonationID: {donation_id}\n")
+            file.write(f"Weight: {weight}\n")
+            file.write(f"SugarLevel: {sugar_level}\n")
+            file.write(f"BloodPressure: {blood_pressure}\n")
+            file.write(f"DateChecked: {date_checked}\n")
+            file.write(f"TimeChecked: {time_checked}\n")
+            file.write("----------------------------------------\n")
+
+        print("Health state recorded successfully!")
+    except Exception as e:
+        print(f"Error saving health state: {e}")

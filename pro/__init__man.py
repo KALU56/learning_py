@@ -39,7 +39,8 @@ def supervisor_welcome():
         print("1. all doner see")
         print("2. approved the appointment")
         print("3. send Medical Information")
-        print("4. Exit")
+        print("4. record health state")
+        print("5. Exit")
         
         option = input("Please choose an option (1, 2, 3, 4): ").strip()
         
@@ -49,8 +50,9 @@ def supervisor_welcome():
             supervise.approve_appointments()# Corrected function call
         elif option == "3":
             supervise.record_medical_history()
-            
         elif option == "4":
+            supervise.record_health_state()   
+        elif option == "5":
             print("Exiting... Goodbye!")
             break
         else:
