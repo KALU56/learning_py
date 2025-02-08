@@ -30,3 +30,19 @@ Region: a
 Wereda: a
 Subcity: a
 ----------------------------------------
+DonorID: ed10965e-6908-471c-975d-26b1fd52180e
+FirstName: q
+LastName: q
+DateOfBirth: 2000-10-10
+Gender: Female
+BloodType: A
+Email: q@gmail.com
+DonorPhoneID: 802bf145-4815-49e7-aeb4-dd58a6502c98
+PhoneNumber: 0912345678
+PhoneType: mobile
+DonorAddressID: 681e6edd-8e54-4933-80e2-c00944f488e4
+City: aa
+Region: aa
+Wereda: aa
+Subcity: aa
+----------------------------------------

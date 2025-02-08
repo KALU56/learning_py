@@ -7,3 +7,12 @@ Hepatitis_C: 1
 SugarLevel: 1
 OutcomeDetails: qwe
 ----------------------------------------
+HistoryID: 7dc1180a-324b-4702-bbd8-87bf62a85504
+Email: q@gmail.com
+HIV: 1
+Syphilis: 1
+Hepatitis_B: 1
+Hepatitis_C: 1
+SugarLevel: 1
+OutcomeDetails: qwerftghy
+----------------------------------------

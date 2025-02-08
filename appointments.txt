@@ -13,4 +13,12 @@ AppointmentDate: 2025-05-05
 AppointmentTime: 12:00
 AppointmentStatus: Disapproved
 ----------------------------------------
+AppointmentID: ebd7a4b8-22f4-41e6-bf9e-ac8fd30204c6
+DonorID: 261b7797-1bee-4115-952c-1b761c232a76
+Email: q@gmail.com
+SupervisorID: ab4f897c-f56a-42a5-a8c6-0ce1ded3c9d9
+AppointmentDate: 2025-05-05
+AppointmentTime: 12:00
+AppointmentStatus: Approved
+----------------------------------------
 ----------------------------------------
